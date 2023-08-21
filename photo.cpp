@@ -37,8 +37,6 @@ void solve() {
         diff[i+1] = stor[i]-stor[i-1];
         pref[i+1] = diff[i+1] + pref[i-1];
     }
-    //even terms: ans[i] = first term + diff[i];
-    //odd terms: ans[i] = second term + diff[i];
     
     vector<int> even(n), odd(n);
     //assume 1 is at even index
@@ -58,7 +56,7 @@ void solve() {
     odd[1] = 1-mn; odd[0] = stor[0]-odd[1];
     for (int i = 2; i < n; i++) 
         odd[i] = odd[i-2] + diff[i];
-
+    //check if valid and find lexicographically smallest
     vector<vector<int>> temp = {odd,even};
     sort(all(temp));
 
